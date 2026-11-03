@@ -13,7 +13,7 @@ O objetivo é trabalhar como num projeto real: entender a aplicação, planejar 
 | Documento | Conteúdo | Situação |
 |---|---|---|
 | [Plano de testes](docs/plano-de-testes.md) | Escopo, estratégia, ordem de execução, riscos e critérios de entrada e saída | Publicado |
-| Casos de teste | 28 casos organizados em 5 módulos, com prioridade e status de execução | Em breve |
+| [Casos de teste](docs/casos-de-teste.md) | 28 casos organizados em 5 módulos, com prioridade e status de execução | Em execução |
 | Relatórios de bug | Defeitos com passos, evidência, severidade e prioridade ([modelo](bugs/TEMPLATE.md)) | Durante a execução |
 | Relatório de execução | Resultado da rodada de testes e conclusão | Ao final |
 
