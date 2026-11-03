@@ -9,12 +9,12 @@ Senha de todos os usuários: `secret_sauce`. Quando não indicado, o usuário é
 | ID | Cenário | Pré-condição | Passos | Resultado esperado | Prioridade | Status |
 |---|---|---|---|---|---|---|
 | CT-001 | Login com credenciais válidas | Estar na tela de login | 1. Informar `standard_user`<br>2. Informar a senha<br>3. Clicar em Login | Usuário é levado para a página de produtos (`/inventory.html`) | Alta | Passou ([evidência](../evidencias/CT-001-login-valido.png)) |
-| CT-002 | Login com senha incorreta | Estar na tela de login | 1. Informar `standard_user`<br>2. Informar a senha `senha123`<br>3. Clicar em Login | Mensagem "Username and password do not match any user in this service" e o usuário continua na tela de login | Alta | A executar |
-| CT-003 | Login com usuário inexistente | Estar na tela de login | 1. Informar `usuario_teste`<br>2. Informar a senha<br>3. Clicar em Login | Mesma mensagem do CT-002, sem indicar qual dos dois campos está errado | Média | A executar |
-| CT-004 | Login com usuário em branco | Estar na tela de login | 1. Deixar o usuário vazio<br>2. Informar a senha<br>3. Clicar em Login | Mensagem "Username is required" | Média | A executar |
-| CT-005 | Login com senha em branco | Estar na tela de login | 1. Informar `standard_user`<br>2. Deixar a senha vazia<br>3. Clicar em Login | Mensagem "Password is required" | Média | A executar |
-| CT-006 | Login com usuário bloqueado | Estar na tela de login | 1. Informar `locked_out_user`<br>2. Informar a senha<br>3. Clicar em Login | Mensagem "Sorry, this user has been locked out." e acesso negado | Alta | A executar |
-| CT-007 | Acesso direto a página interna sem login | Não estar logado | 1. Acessar `https://www.saucedemo.com/inventory.html` pela barra de endereço | Usuário volta para a tela de login com mensagem informando que precisa estar logado | Alta | A executar |
+| CT-002 | Login com senha incorreta | Estar na tela de login | 1. Informar `standard_user`<br>2. Informar a senha `senha123`<br>3. Clicar em Login | Mensagem "Username and password do not match any user in this service" e o usuário continua na tela de login | Alta | Passou ([evidência](../evidencias/CT-002-senha-incorreta.png)) |
+| CT-003 | Login com usuário inexistente | Estar na tela de login | 1. Informar `usuario_teste`<br>2. Informar a senha<br>3. Clicar em Login | Mesma mensagem do CT-002, sem indicar qual dos dois campos está errado | Média | Passou ([evidência](../evidencias/CT-003-usuario-inexistente.png)) |
+| CT-004 | Login com usuário em branco | Estar na tela de login | 1. Deixar o usuário vazio<br>2. Informar a senha<br>3. Clicar em Login | Mensagem "Username is required" | Média | Passou ([evidência](../evidencias/CT-004-usuario-em-branco.png)) |
+| CT-005 | Login com senha em branco | Estar na tela de login | 1. Informar `standard_user`<br>2. Deixar a senha vazia<br>3. Clicar em Login | Mensagem "Password is required" | Média | Passou ([evidência](../evidencias/CT-005-senha-em-branco.png)) |
+| CT-006 | Login com usuário bloqueado | Estar na tela de login | 1. Informar `locked_out_user`<br>2. Informar a senha<br>3. Clicar em Login | Mensagem "Sorry, this user has been locked out." e acesso negado | Alta | Passou ([evidência](../evidencias/CT-006-usuario-bloqueado.png)) |
+| CT-007 | Acesso direto a página interna sem login | Não estar logado | 1. Acessar `https://www.saucedemo.com/inventory.html` pela barra de endereço | Usuário volta para a tela de login com mensagem informando que precisa estar logado | Alta | Passou ([evidência](../evidencias/CT-007-acesso-sem-login.png)) |
 | CT-008 | Tempo de login com `performance_glitch_user` | Estar na tela de login | 1. Informar `performance_glitch_user`<br>2. Informar a senha<br>3. Clicar em Login e cronometrar | Login concluído em até 3 segundos | Baixa | A executar |
 
 ## Produtos
@@ -62,3 +62,10 @@ Senha de todos os usuários: `secret_sauce`. Quando não indicado, o usuário é
 | Data | Etapa | Casos | Resultado |
 |---|---|---|---|
 | 30/10/2026 | 1. Smoke test (`standard_user`) | CT-001, CT-009, CT-015, CT-020, CT-021, CT-027 | 6 passaram, 0 falharam |
+| 03/11/2026 | 2. Login (`standard_user`, `locked_out_user` e usuário inexistente) | CT-002 a CT-007 | 6 passaram, 0 falharam |
+
+## Rastreabilidade com os bugs
+
+| Caso | Bug |
+|---|---|
+| CT-002, CT-003, CT-007 | [BUG-007](../bugs/BUG-007-mensagem-de-erro-vaza-da-caixa.md) |
