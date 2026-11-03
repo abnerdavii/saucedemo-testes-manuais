@@ -30,6 +30,8 @@ Verificar se um usuário consegue entrar na loja, escolher produtos e concluir u
 - Pagamento real: a aplicação não processa pagamento
 - Navegadores além do Chrome nesta rodada
 - Links externos do rodapé (redes sociais)
+- Menu "Dynamic Catalog" (modos Lazy Load, Spinner e Slider de carregamento do catálogo): função identificada durante a execução, fica para uma próxima rodada
+- Botão "Generate PDF order" na tela de compra concluída: função identificada durante a execução, fica para uma próxima rodada
 
 ## 3. Estratégia
 
