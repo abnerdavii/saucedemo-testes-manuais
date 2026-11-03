@@ -23,10 +23,10 @@ Senha de todos os usuários: `secret_sauce`. Quando não indicado, o usuário é
 |---|---|---|---|---|---|---|
 | CT-009 | Exibição da lista de produtos | Logado | 1. Observar a página de produtos | 6 produtos exibidos, cada um com imagem, nome, descrição, preço e botão "Add to cart" | Alta | Passou ([evidência](../evidencias/CT-009-lista-de-produtos.png)) |
 | CT-010 | Imagem correspondente ao produto | Logado | 1. Comparar a imagem de cada produto com o nome<br>2. Repetir com `problem_user` | Cada produto mostra a própria imagem | Média | A executar |
-| CT-011 | Ordenar por nome (A a Z e Z a A) | Logado | 1. Selecionar "Name (Z to A)"<br>2. Verificar a ordem<br>3. Selecionar "Name (A to Z)" | Lista reordenada alfabeticamente nos dois sentidos | Média | A executar |
-| CT-012 | Ordenar por preço (menor e maior) | Logado | 1. Selecionar "Price (low to high)"<br>2. Verificar a ordem<br>3. Selecionar "Price (high to low)" | Lista começa em $7.99 no primeiro caso e em $49.99 no segundo | Média | A executar |
-| CT-013 | Página de detalhe do produto | Logado | 1. Clicar no nome "Sauce Labs Backpack" | Página de detalhe mostra o mesmo nome, descrição e preço da listagem ($29.99) | Média | A executar |
-| CT-014 | Voltar da página de detalhe | Na página de detalhe de um produto | 1. Clicar em "Back to products" | Usuário volta para a listagem | Baixa | A executar |
+| CT-011 | Ordenar por nome (A a Z e Z a A) | Logado | 1. Selecionar "Name (Z to A)"<br>2. Verificar a ordem<br>3. Selecionar "Name (A to Z)" | Lista reordenada alfabeticamente nos dois sentidos | Média | Passou ([evidência](../evidencias/CT-011-ordenar-por-nome.png)) |
+| CT-012 | Ordenar por preço (menor e maior) | Logado | 1. Selecionar "Price (low to high)"<br>2. Verificar a ordem<br>3. Selecionar "Price (high to low)" | Lista começa em $7.99 no primeiro caso e em $49.99 no segundo | Média | Passou ([evidência](../evidencias/CT-012-ordenar-por-preco.png)) |
+| CT-013 | Página de detalhe do produto | Logado | 1. Clicar no nome "Sauce Labs Backpack" | Página de detalhe mostra o mesmo nome, descrição e preço da listagem ($29.99) | Média | Passou ([evidência](../evidencias/CT-013-detalhe-do-produto.png)) |
+| CT-014 | Voltar da página de detalhe | Na página de detalhe de um produto | 1. Clicar em "Back to products" | Usuário volta para a listagem | Baixa | Passou ([evidência](../evidencias/CT-014-voltar-do-detalhe.png)) |
 
 ## Carrinho
 
@@ -63,6 +63,7 @@ Senha de todos os usuários: `secret_sauce`. Quando não indicado, o usuário é
 |---|---|---|---|
 | 30/10/2026 | 1. Smoke test (`standard_user`) | CT-001, CT-009, CT-015, CT-020, CT-021, CT-027 | 6 passaram, 0 falharam |
 | 03/11/2026 | 2. Login (`standard_user`, `locked_out_user` e usuário inexistente) | CT-002 a CT-007 | 6 passaram, 0 falharam |
+| 03/11/2026 | 3. Produtos (`standard_user`) | CT-011 a CT-014 | 4 passaram, 0 falharam |
 
 ## Rastreabilidade com os bugs
 
