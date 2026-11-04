@@ -33,10 +33,10 @@ Senha de todos os usuários: `secret_sauce`. Quando não indicado, o usuário é
 | ID | Cenário | Pré-condição | Passos | Resultado esperado | Prioridade | Status |
 |---|---|---|---|---|---|---|
 | CT-015 | Adicionar um produto | Logado, carrinho vazio | 1. Clicar em "Add to cart" no "Sauce Labs Backpack" | Botão muda para "Remove" e o ícone do carrinho mostra 1 | Alta | Passou ([evidência](../evidencias/CT-015-adicionar-produto.png)) |
-| CT-016 | Adicionar todos os produtos | Logado, carrinho vazio | 1. Clicar em "Add to cart" nos 6 produtos<br>2. Repetir com `problem_user` | Ícone mostra 6 e todos aparecem no carrinho | Alta | A executar |
-| CT-017 | Remover produto pela listagem | 1 produto no carrinho | 1. Clicar em "Remove" na listagem | Botão volta para "Add to cart" e o contador some | Média | A executar |
-| CT-018 | Remover produto dentro do carrinho | 2 produtos no carrinho | 1. Abrir o carrinho<br>2. Clicar em "Remove" em um item | Item sai da lista e o contador mostra 1 | Média | A executar |
-| CT-019 | Carrinho mantido após navegar | 2 produtos no carrinho | 1. Abrir o detalhe de um produto<br>2. Voltar para a listagem<br>3. Abrir o carrinho | Os 2 produtos continuam no carrinho | Média | A executar |
+| CT-016 | Adicionar todos os produtos | Logado, carrinho vazio | 1. Clicar em "Add to cart" nos 6 produtos<br>2. Repetir com `problem_user` | Ícone mostra 6 e todos aparecem no carrinho | Alta | Passou ([evidência](../evidencias/CT-016-adicionar-todos.png)) com `standard_user`; `problem_user` na etapa 7 |
+| CT-017 | Remover produto pela listagem | 1 produto no carrinho | 1. Clicar em "Remove" na listagem | Botão volta para "Add to cart" e o contador some | Média | Passou ([evidência](../evidencias/CT-017-remover-pela-listagem.png)) |
+| CT-018 | Remover produto dentro do carrinho | 2 produtos no carrinho | 1. Abrir o carrinho<br>2. Clicar em "Remove" em um item | Item sai da lista e o contador mostra 1 | Média | Passou ([evidência](../evidencias/CT-018-remover-no-carrinho.png)) |
+| CT-019 | Carrinho mantido após navegar | 2 produtos no carrinho | 1. Abrir o detalhe de um produto<br>2. Voltar para a listagem<br>3. Abrir o carrinho | Os 2 produtos continuam no carrinho | Média | Passou ([evidência](../evidencias/CT-019-carrinho-apos-navegar.png)) |
 
 ## Checkout
 
@@ -64,9 +64,12 @@ Senha de todos os usuários: `secret_sauce`. Quando não indicado, o usuário é
 | 30/10/2026 | 1. Smoke test (`standard_user`) | CT-001, CT-009, CT-015, CT-020, CT-021, CT-027 | 6 passaram, 0 falharam |
 | 03/11/2026 | 2. Login (`standard_user`, `locked_out_user` e usuário inexistente) | CT-002 a CT-007 | 6 passaram, 0 falharam |
 | 03/11/2026 | 3. Produtos (`standard_user`) | CT-011 a CT-014 | 4 passaram, 0 falharam |
+| 03/11/2026 | 4. Carrinho (`standard_user`) | CT-016 a CT-019 | 4 passaram, 0 falharam. A parte do CT-016 com `problem_user` fica para a etapa 7 |
 
 ## Rastreabilidade com os bugs
 
 | Caso | Bug |
 |---|---|
 | CT-002, CT-003, CT-007 | [BUG-007](../bugs/BUG-007-mensagem-de-erro-vaza-da-caixa.md) |
+| Preparação do CT-017 | [BUG-008](../bugs/BUG-008-reset-app-state-nao-atualiza-botoes.md) |
+| CT-020 (Enter no lugar de Continue) | [BUG-009](../bugs/BUG-009-enter-no-checkout-aciona-cancel.md) |
