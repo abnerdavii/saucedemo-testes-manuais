@@ -15,16 +15,16 @@ Senha de todos os usuários: `secret_sauce`. Quando não indicado, o usuário é
 | CT-005 | Login com senha em branco | Estar na tela de login | 1. Informar `standard_user`<br>2. Deixar a senha vazia<br>3. Clicar em Login | Mensagem "Password is required" | Média | Passou ([evidência](../evidencias/CT-005-senha-em-branco.png)) |
 | CT-006 | Login com usuário bloqueado | Estar na tela de login | 1. Informar `locked_out_user`<br>2. Informar a senha<br>3. Clicar em Login | Mensagem "Sorry, this user has been locked out." e acesso negado | Alta | Passou ([evidência](../evidencias/CT-006-usuario-bloqueado.png)) |
 | CT-007 | Acesso direto a página interna sem login | Não estar logado | 1. Acessar `https://www.saucedemo.com/inventory.html` pela barra de endereço | Usuário volta para a tela de login com mensagem informando que precisa estar logado | Alta | Passou ([evidência](../evidencias/CT-007-acesso-sem-login.png)) |
-| CT-008 | Tempo de login com `performance_glitch_user` | Estar na tela de login | 1. Informar `performance_glitch_user`<br>2. Informar a senha<br>3. Clicar em Login e cronometrar | Login concluído em até 3 segundos | Baixa | A executar |
+| CT-008 | Tempo de login com `performance_glitch_user` | Estar na tela de login | 1. Informar `performance_glitch_user`<br>2. Informar a senha<br>3. Clicar em Login e cronometrar | Login concluído em até 3 segundos | Baixa | Falhou: 5,03 s nas 4 medições ([BUG-010](../bugs/BUG-010-login-lento-performance-glitch-user.md), [evidência](../evidencias/BUG-010-login-lento.png)) |
 
 ## Produtos
 
 | ID | Cenário | Pré-condição | Passos | Resultado esperado | Prioridade | Status |
 |---|---|---|---|---|---|---|
 | CT-009 | Exibição da lista de produtos | Logado | 1. Observar a página de produtos | 6 produtos exibidos, cada um com imagem, nome, descrição, preço e botão "Add to cart" | Alta | Passou ([evidência](../evidencias/CT-009-lista-de-produtos.png)) |
-| CT-010 | Imagem correspondente ao produto | Logado | 1. Comparar a imagem de cada produto com o nome<br>2. Repetir com `problem_user` | Cada produto mostra a própria imagem | Média | A executar |
-| CT-011 | Ordenar por nome (A a Z e Z a A) | Logado | 1. Selecionar "Name (Z to A)"<br>2. Verificar a ordem<br>3. Selecionar "Name (A to Z)" | Lista reordenada alfabeticamente nos dois sentidos | Média | Passou ([evidência](../evidencias/CT-011-ordenar-por-nome.png)) |
-| CT-012 | Ordenar por preço (menor e maior) | Logado | 1. Selecionar "Price (low to high)"<br>2. Verificar a ordem<br>3. Selecionar "Price (high to low)" | Lista começa em $7.99 no primeiro caso e em $49.99 no segundo | Média | Passou ([evidência](../evidencias/CT-012-ordenar-por-preco.png)) |
+| CT-010 | Imagem correspondente ao produto | Logado | 1. Comparar a imagem de cada produto com o nome<br>2. Repetir com `problem_user` | Cada produto mostra a própria imagem | Média | Falhou com `problem_user` ([BUG-006](../bugs/BUG-006-imagens-incorretas.md), [evidência](../evidencias/BUG-006-imagens-iguais.png)); passou com `standard_user` |
+| CT-011 | Ordenar por nome (A a Z e Z a A) | Logado | 1. Selecionar "Name (Z to A)"<br>2. Verificar a ordem<br>3. Selecionar "Name (A to Z)" | Lista reordenada alfabeticamente nos dois sentidos | Média | Falhou com `problem_user` ([BUG-005](../bugs/BUG-005-ordenacao-nao-funciona.md)); passou com `standard_user` ([evidência](../evidencias/CT-011-ordenar-por-nome.png)) |
+| CT-012 | Ordenar por preço (menor e maior) | Logado | 1. Selecionar "Price (low to high)"<br>2. Verificar a ordem<br>3. Selecionar "Price (high to low)" | Lista começa em $7.99 no primeiro caso e em $49.99 no segundo | Média | Falhou com `problem_user` ([BUG-005](../bugs/BUG-005-ordenacao-nao-funciona.md)); passou com `standard_user` ([evidência](../evidencias/CT-012-ordenar-por-preco.png)) |
 | CT-013 | Página de detalhe do produto | Logado | 1. Clicar no nome "Sauce Labs Backpack" | Página de detalhe mostra o mesmo nome, descrição e preço da listagem ($29.99) | Média | Passou ([evidência](../evidencias/CT-013-detalhe-do-produto.png)) |
 | CT-014 | Voltar da página de detalhe | Na página de detalhe de um produto | 1. Clicar em "Back to products" | Usuário volta para a listagem | Baixa | Passou ([evidência](../evidencias/CT-014-voltar-do-detalhe.png)) |
 
@@ -33,7 +33,7 @@ Senha de todos os usuários: `secret_sauce`. Quando não indicado, o usuário é
 | ID | Cenário | Pré-condição | Passos | Resultado esperado | Prioridade | Status |
 |---|---|---|---|---|---|---|
 | CT-015 | Adicionar um produto | Logado, carrinho vazio | 1. Clicar em "Add to cart" no "Sauce Labs Backpack" | Botão muda para "Remove" e o ícone do carrinho mostra 1 | Alta | Passou ([evidência](../evidencias/CT-015-adicionar-produto.png)) |
-| CT-016 | Adicionar todos os produtos | Logado, carrinho vazio | 1. Clicar em "Add to cart" nos 6 produtos<br>2. Repetir com `problem_user` | Ícone mostra 6 e todos aparecem no carrinho | Alta | Passou ([evidência](../evidencias/CT-016-adicionar-todos.png)) com `standard_user`; `problem_user` na etapa 7 |
+| CT-016 | Adicionar todos os produtos | Logado, carrinho vazio | 1. Clicar em "Add to cart" nos 6 produtos<br>2. Repetir com `problem_user` | Ícone mostra 6 e todos aparecem no carrinho | Alta | Falhou com `problem_user`: 3 de 6 adicionados ([BUG-004](../bugs/BUG-004-produtos-nao-adicionados.md)); passou com `standard_user` ([evidência](../evidencias/CT-016-adicionar-todos.png)) |
 | CT-017 | Remover produto pela listagem | 1 produto no carrinho | 1. Clicar em "Remove" na listagem | Botão volta para "Add to cart" e o contador some | Média | Passou ([evidência](../evidencias/CT-017-remover-pela-listagem.png)) |
 | CT-018 | Remover produto dentro do carrinho | 2 produtos no carrinho | 1. Abrir o carrinho<br>2. Clicar em "Remove" em um item | Item sai da lista e o contador mostra 1 | Média | Passou ([evidência](../evidencias/CT-018-remover-no-carrinho.png)) |
 | CT-019 | Carrinho mantido após navegar | 2 produtos no carrinho | 1. Abrir o detalhe de um produto<br>2. Voltar para a listagem<br>3. Abrir o carrinho | Os 2 produtos continuam no carrinho | Média | Passou ([evidência](../evidencias/CT-019-carrinho-apos-navegar.png)) |
@@ -44,18 +44,18 @@ Senha de todos os usuários: `secret_sauce`. Quando não indicado, o usuário é
 |---|---|---|---|---|---|---|
 | CT-020 | Compra completa com dados válidos | "Sauce Labs Backpack" e "Sauce Labs Bike Light" no carrinho | 1. Abrir o carrinho e clicar em Checkout<br>2. Preencher `Maria`, `Souza`, `15775000`<br>3. Clicar em Continue<br>4. Clicar em Finish | Mensagem "Thank you for your order!" e carrinho esvaziado | Alta | Passou ([evidência](../evidencias/CT-020-compra-concluida.png)) |
 | CT-021 | Cálculo do resumo do pedido | Mesmos itens do CT-020, na tela de resumo | 1. Conferir os valores exibidos | Item total $39.98, imposto (Tax) $3.20 (8%) e total $43.18 | Alta | Passou ([evidência](../evidencias/CT-021-resumo-do-pedido.png)) |
-| CT-022 | Campo nome obrigatório | Na tela de dados do checkout | 1. Deixar o nome vazio e preencher os outros campos<br>2. Clicar em Continue | Mensagem "First Name is required" | Média | A executar |
-| CT-023 | Campo sobrenome obrigatório | Na tela de dados do checkout | 1. Deixar o sobrenome vazio e preencher os outros campos<br>2. Clicar em Continue | Mensagem "Last Name is required" | Média | A executar |
-| CT-024 | Campo CEP obrigatório | Na tela de dados do checkout | 1. Deixar o CEP vazio e preencher os outros campos<br>2. Clicar em Continue | Mensagem "Postal Code is required" | Média | A executar |
-| CT-025 | Checkout com carrinho vazio | Logado, carrinho vazio | 1. Abrir o carrinho<br>2. Clicar em Checkout | Sistema impede o checkout ou informa que o carrinho está vazio | Alta | A executar |
-| CT-026 | Cancelar o checkout | Na tela de resumo do pedido | 1. Clicar em Cancel | Usuário volta para a listagem e os itens continuam no carrinho | Média | A executar |
+| CT-022 | Campo nome obrigatório | Na tela de dados do checkout | 1. Deixar o nome vazio e preencher os outros campos<br>2. Clicar em Continue | Mensagem "First Name is required" | Média | Passou ([evidência](../evidencias/CT-022-nome-obrigatorio.png)) |
+| CT-023 | Campo sobrenome obrigatório | Na tela de dados do checkout | 1. Deixar o sobrenome vazio e preencher os outros campos<br>2. Clicar em Continue | Mensagem "Last Name is required" | Média | Falhou com `problem_user` ([BUG-003](../bugs/BUG-003-sobrenome-nao-aceita-digitacao.md)); passou com `standard_user` ([evidência](../evidencias/CT-023-sobrenome-obrigatorio.png)) |
+| CT-024 | Campo CEP obrigatório | Na tela de dados do checkout | 1. Deixar o CEP vazio e preencher os outros campos<br>2. Clicar em Continue | Mensagem "Postal Code is required" | Média | Passou ([evidência](../evidencias/CT-024-cep-obrigatorio.png)) |
+| CT-025 | Checkout com carrinho vazio | Logado, carrinho vazio | 1. Abrir o carrinho<br>2. Clicar em Checkout | Sistema impede o checkout ou informa que o carrinho está vazio | Alta | Falhou: a compra é concluída com o carrinho vazio ([BUG-001](../bugs/BUG-001-checkout-carrinho-vazio.md), [evidência](../evidencias/BUG-001-compra-com-carrinho-vazio.png)) |
+| CT-026 | Cancelar o checkout | Na tela de resumo do pedido | 1. Clicar em Cancel | Usuário volta para a listagem e os itens continuam no carrinho | Média | Passou ([evidência](../evidencias/CT-026-cancelar-checkout.png)) |
 
 ## Menu e sessão
 
 | ID | Cenário | Pré-condição | Passos | Resultado esperado | Prioridade | Status |
 |---|---|---|---|---|---|---|
 | CT-027 | Logout | Logado | 1. Abrir o menu lateral<br>2. Clicar em Logout | Usuário volta para a tela de login | Alta | Passou ([evidência](../evidencias/CT-027-logout.png)) |
-| CT-028 | Voltar no navegador após logout | Ter feito logout | 1. Clicar no botão voltar do navegador | Página de produtos não é exibida e o usuário continua na tela de login | Média | A executar |
+| CT-028 | Voltar no navegador após logout | Ter feito logout | 1. Clicar no botão voltar do navegador | Página de produtos não é exibida e o usuário continua na tela de login | Média | Passou ([evidência](../evidencias/CT-028-voltar-apos-logout.png)) |
 
 ## Registro de execução
 
@@ -65,11 +65,25 @@ Senha de todos os usuários: `secret_sauce`. Quando não indicado, o usuário é
 | 03/11/2026 | 2. Login (`standard_user`, `locked_out_user` e usuário inexistente) | CT-002 a CT-007 | 6 passaram, 0 falharam |
 | 03/11/2026 | 3. Produtos (`standard_user`) | CT-011 a CT-014 | 4 passaram, 0 falharam |
 | 03/11/2026 | 4. Carrinho (`standard_user`) | CT-016 a CT-019 | 4 passaram, 0 falharam. A parte do CT-016 com `problem_user` fica para a etapa 7 |
+| 24/11/2026 | 5. Checkout (`standard_user`) | CT-022 a CT-026 | 4 passaram, 1 falhou (CT-025, BUG-001) |
+| 24/11/2026 | 6. Sessão (`standard_user`) | CT-028 | 1 passou |
+| 24/11/2026 | 7. Comparação de perfis (`problem_user`) | CT-010, CT-011, CT-012, CT-016, CT-023 | 5 falharam (BUG-003 a BUG-006); todos passam com `standard_user` |
+| 24/11/2026 | 8. Desempenho (`performance_glitch_user`) | CT-008 | 1 falhou (BUG-010) |
+| 24/11/2026 | 9. Sessão exploratória do checkout | — | BUG-002 confirmado e BUG-012 encontrado |
 
 ## Rastreabilidade com os bugs
 
 | Caso | Bug |
 |---|---|
+| CT-025 | [BUG-001](../bugs/BUG-001-checkout-carrinho-vazio.md) |
+| Sessão exploratória (checkout) | [BUG-002](../bugs/BUG-002-checkout-sem-validacao-de-formato.md) |
+| CT-023 (`problem_user`) | [BUG-003](../bugs/BUG-003-sobrenome-nao-aceita-digitacao.md) |
+| CT-016 (`problem_user`) | [BUG-004](../bugs/BUG-004-produtos-nao-adicionados.md) |
+| CT-011, CT-012 (`problem_user`) | [BUG-005](../bugs/BUG-005-ordenacao-nao-funciona.md) |
+| CT-010 (`problem_user`) | [BUG-006](../bugs/BUG-006-imagens-incorretas.md) |
 | CT-002, CT-003, CT-007 | [BUG-007](../bugs/BUG-007-mensagem-de-erro-vaza-da-caixa.md) |
 | Preparação do CT-017 | [BUG-008](../bugs/BUG-008-reset-app-state-nao-atualiza-botoes.md) |
 | CT-020 (Enter no lugar de Continue) | [BUG-009](../bugs/BUG-009-enter-no-checkout-aciona-cancel.md) |
+| CT-008 | [BUG-010](../bugs/BUG-010-login-lento-performance-glitch-user.md) |
+| Etapa 7 (troca de usuário) | [BUG-011](../bugs/BUG-011-carrinho-compartilhado-entre-usuarios.md) |
+| Sessão exploratória (checkout) | [BUG-012](../bugs/BUG-012-checkout-pula-dados-pela-url.md) |
