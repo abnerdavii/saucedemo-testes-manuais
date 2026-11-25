@@ -28,7 +28,7 @@ Verificar se um usuário consegue entrar na loja, escolher produtos e concluir u
 - Testes de carga e desempenho com medição formal
 - Testes de segurança (injeção, força bruta)
 - Pagamento real: a aplicação não processa pagamento
-- Navegadores além do Chrome nesta rodada
+- Navegadores fora da família Chromium (Firefox, Safari) nesta rodada
 - Links externos do rodapé (redes sociais)
 - Menu "Dynamic Catalog" (modos Lazy Load, Spinner e Slider de carregamento do catálogo): função identificada durante a execução, fica para uma próxima rodada
 - Botão "Generate PDF order" na tela de compra concluída: função identificada durante a execução, fica para uma próxima rodada
@@ -54,7 +54,7 @@ Verificar se um usuário consegue entrar na loja, escolher produtos e concluir u
 ## 4. Ambiente e dados de teste
 
 - URL: https://www.saucedemo.com
-- Navegador: Google Chrome (versão registrada no relatório de execução), janela 1920x1080
+- Navegador: baseado em Chromium (Google Chrome ou Brave); versão e tamanho de janela registrados no relatório de execução
 - Sistema operacional: Windows 11
 - Senha de todos os usuários: `secret_sauce`
 
