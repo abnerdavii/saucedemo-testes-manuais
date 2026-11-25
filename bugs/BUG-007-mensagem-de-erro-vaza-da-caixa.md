@@ -33,6 +33,8 @@ A mensagem "Epic sadface: Username and password do not match any user in this se
 
 O mesmo acontece com a mensagem do acesso direto sem login ("You can only access '/inventory.html' when you are logged in.").
 
+Em 24/11/2026 o defeito foi reproduzido de novo no Brave 158 (janela 1440x681), na mensagem exibida ao voltar no navegador depois do logout (CT-028).
+
 ## Impacto
 
 Afeta as mensagens de erro mais comuns do login, as que aparecem quando o usuário erra a senha ou tenta entrar numa página sem estar logado. O usuário consegue tentar de novo, mas pode não entender o motivo do erro.
@@ -42,3 +44,4 @@ Afeta as mensagens de erro mais comuns do login, as que aparecem quando o usuár
 - [evidencias/BUG-007-mensagem-vazando.png](../evidencias/BUG-007-mensagem-vazando.png) (recorte ampliado do CT-002)
 - [evidencias/BUG-007-print-original.png](../evidencias/BUG-007-print-original.png) (primeira ocorrência, senha inválida com `standard_user`)
 - [evidencias/CT-007-acesso-sem-login.png](../evidencias/CT-007-acesso-sem-login.png) (mesma falha na mensagem de acesso sem login)
+- [evidencias/CT-028-voltar-apos-logout.png](../evidencias/CT-028-voltar-apos-logout.png) (reprodução no Brave 158)
